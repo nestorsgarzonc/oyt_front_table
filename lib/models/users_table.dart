@@ -83,6 +83,9 @@ class UsersTable extends Equatable {
   final TableStatus? tableStatus;
   final bool needsWaiter;
 
+  bool get isTableEmpty => users.isEmpty;
+  bool get hasSomeProducts => users.any((user) => user.orderProducts.isNotEmpty);
+
   @override
   List<Object?> get props => [users, userName, totalPrice, tableStatus, needsWaiter];
 
