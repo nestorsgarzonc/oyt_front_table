@@ -3,6 +3,15 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class CustomerRequestsResponse extends Equatable {
+
+  factory CustomerRequestsResponse.fromJson(String source) =>
+      CustomerRequestsResponse.fromMap(json.decode(source));
+
+  factory CustomerRequestsResponse.fromMap(Map<String, dynamic> map) {
+    return CustomerRequestsResponse(
+      List<String>.from(map['callingTables']),
+    );
+  }
   const CustomerRequestsResponse(this.callingTables);
 
   final List<String> callingTables;
@@ -24,16 +33,7 @@ class CustomerRequestsResponse extends Equatable {
     };
   }
 
-  factory CustomerRequestsResponse.fromMap(Map<String, dynamic> map) {
-    return CustomerRequestsResponse(
-      List<String>.from(map['callingTables']),
-    );
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory CustomerRequestsResponse.fromJson(String source) =>
-      CustomerRequestsResponse.fromMap(json.decode(source));
 
   @override
   String toString() => 'CustomerRequestsResponse(callingTables: $callingTables)';

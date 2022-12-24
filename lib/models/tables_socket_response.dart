@@ -3,6 +3,12 @@ import 'package:equatable/equatable.dart';
 import 'package:oyt_front_table/models/users_table.dart';
 
 class TablesSocketResponse extends Equatable {
+
+  factory TablesSocketResponse.fromList(List list) {
+    return TablesSocketResponse(
+      tables: List<TableResponse>.from(list.map((x) => TableResponse.fromMap(x))),
+    );
+  }
   const TablesSocketResponse({required this.tables});
 
   final List<TableResponse> tables;
@@ -21,12 +27,6 @@ class TablesSocketResponse extends Equatable {
     };
   }
 
-  factory TablesSocketResponse.fromList(List list) {
-    return TablesSocketResponse(
-      tables: List<TableResponse>.from(list.map((x) => TableResponse.fromMap(x))),
-    );
-  }
-
   String toJson() => json.encode(toMap());
 
   @override
@@ -37,6 +37,16 @@ class TablesSocketResponse extends Equatable {
 }
 
 class TableResponse extends Equatable {
+
+  factory TableResponse.fromJson(String source) => TableResponse.fromMap(json.decode(source));
+
+  factory TableResponse.fromMap(Map<String, dynamic> map) {
+    return TableResponse(
+      id: map['_id'] ?? '',
+      name: map['name'] ?? '',
+      status: TableStatus.fromString(map['status'] ?? ''),
+    );
+  }
   const TableResponse({
     required this.id,
     required this.name,
@@ -67,17 +77,7 @@ class TableResponse extends Equatable {
     };
   }
 
-  factory TableResponse.fromMap(Map<String, dynamic> map) {
-    return TableResponse(
-      id: map['_id'] ?? '',
-      name: map['name'] ?? '',
-      status: TableStatus.fromString(map['status'] ?? ''),
-    );
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory TableResponse.fromJson(String source) => TableResponse.fromMap(json.decode(source));
 
   @override
   String toString() => 'TableResponse(id: $id, name: $name, status: $status)';
