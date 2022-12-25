@@ -16,11 +16,7 @@ class TableStatusCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 5,
-            spreadRadius: 1,
-          ),
+          BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 5, spreadRadius: 1),
         ],
       ),
       child: Row(
