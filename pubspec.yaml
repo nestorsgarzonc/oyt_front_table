@@ -21,6 +21,8 @@ dependencies:
     path: ../oyt_front_auth
   oyt_front_product:
     path: ../oyt_front_product
+  oyt_front_widgets:
+    path: ../oyt_front_widgets
 
 dev_dependencies:
   flutter_test:
