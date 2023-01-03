@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:oyt_front_core/constants/lotti_assets.dart';
+import 'package:oyt_front_core/theme/theme.dart';
 import 'package:oyt_front_table/models/users_table.dart';
 
 class TableStatusCard extends StatelessWidget {
@@ -12,13 +13,7 @@ class TableStatusCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 5, spreadRadius: 1),
-        ],
-      ),
+      decoration: CustomTheme.roundedBoxDecoration,
       child: Row(
         children: [
           Lottie.asset(LottieAssets.ordering, width: 140),
