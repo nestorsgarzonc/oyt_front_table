@@ -16,7 +16,7 @@ class TableUserCard extends ConsumerWidget {
   final UserTable userTable;
   final bool isExpanded;
   final bool showPrice;
-  final void Function(UserTable userTable, ProductDetailModel productDetail) onEdit;
+  final void Function(UserTable userTable, ProductDetailModel productDetail)? onEdit;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -63,10 +63,12 @@ class TableUserCard extends ConsumerWidget {
                             const SizedBox(height: 8),
                           ],
                         ),
-                        trailing: IconButton(
-                          onPressed: () => onEdit(userTable, e),
-                          icon: const Icon(Icons.edit),
-                        ),
+                        trailing: onEdit != null
+                            ? IconButton(
+                                onPressed: () => onEdit!(userTable, e),
+                                icon: const Icon(Icons.edit),
+                              )
+                            : null,
                         leading: ClipRRect(
                           borderRadius: BorderRadius.circular(8),
                           child: Image.network(
