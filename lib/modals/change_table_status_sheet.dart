@@ -4,7 +4,6 @@ import 'package:oyt_front_table/models/tables_socket_response.dart';
 import 'package:oyt_front_table/models/users_table.dart';
 import 'package:oyt_front_widgets/bottom_sheet/base_bottom_sheet.dart';
 import 'package:oyt_front_widgets/bottom_sheet/bottom_sheet_constants.dart';
-import 'package:oyt_front_widgets/widgets/buttons/custom_elevated_button.dart';
 
 class ChangeTableStatusSheet extends ConsumerStatefulWidget {
   const ChangeTableStatusSheet({
@@ -78,7 +77,7 @@ class _ChangeTableStatusSheetState extends ConsumerState<ChangeTableStatusSheet>
           ),
           SizedBox(
             width: double.infinity,
-            child: CustomElevatedButton(
+            child: FilledButton(
               onPressed: onChangeStatus,
               child: const Text('Cambiar estado'),
             ),
