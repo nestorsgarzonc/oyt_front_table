@@ -29,10 +29,10 @@ class TableUserCard extends ConsumerWidget {
                   style: TextStyle(fontSize: 17, color: Colors.black.withOpacity(.7)),
                 )
               : null,
-          leading: const CircleAvatar(
-            backgroundColor: Colors.deepOrange,
+          leading: CircleAvatar(
+            backgroundColor: Theme.of(context).primaryColor,
             foregroundColor: Colors.white,
-            child: Icon(Icons.person),
+            child: const Icon(Icons.person),
           ),
           title: Text(
             '${userTable.firstName} ${userTable.lastName}',
