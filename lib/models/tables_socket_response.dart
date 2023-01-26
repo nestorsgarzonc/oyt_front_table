@@ -77,6 +77,13 @@ class TableResponse extends Equatable {
     };
   }
 
+  Map<String, dynamic> toUpdateTableMap() {
+    return {
+      'tableId': id,
+      'name': name,
+    };
+  }
+
   String toJson() => json.encode(toMap());
 
   @override
