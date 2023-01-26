@@ -8,6 +8,7 @@ final tableDataSourceProvider = Provider<TableDataSource>(TableDataSourceImpl.fr
 abstract class TableDataSource {
   Future<void> addTable(String tableName);
   Future<void> updateTable(TableResponse table);
+  Future<void> deleteTable(String deleteTable);
 }
 
 class TableDataSourceImpl implements TableDataSource {
@@ -34,6 +35,16 @@ class TableDataSourceImpl implements TableDataSource {
   Future<void> updateTable(TableResponse table) async {
     try {
       await apiHandler.put('/table', table.toUpdateTableMap());
+    } catch (e, s) {
+      Logger.logError(e.toString(), s);
+      rethrow;
+    }
+  }
+  
+  @override
+  Future<void> deleteTable(String deleteTable) async{
+    try {
+      await apiHandler.delete('/table', {'tableId': deleteTable});
     } catch (e, s) {
       Logger.logError(e.toString(), s);
       rethrow;

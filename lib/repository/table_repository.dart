@@ -7,6 +7,7 @@ final tableRepositoryProvider = Provider<TableRepository>(TableRepositoryImpl.fr
 
 abstract class TableRepository {
   Future<Failure?> addTable(String tableName);
+  Future<Failure?> deleteTable(String tableId);
   Future<Failure?> updateTable(TableResponse table);
 }
 
@@ -34,6 +35,16 @@ class TableRepositoryImpl implements TableRepository {
   Future<Failure?> updateTable(TableResponse table) async {
     try {
       await tableDataSource.updateTable(table);
+      return null;
+    } catch (e) {
+      return Failure(e.toString());
+    }
+  }
+
+  @override
+  Future<Failure?> deleteTable(String tableId)async{
+    try {
+      await tableDataSource.deleteTable(tableId);
       return null;
     } catch (e) {
       return Failure(e.toString());
