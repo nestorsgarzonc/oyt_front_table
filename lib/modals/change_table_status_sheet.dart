@@ -7,17 +7,20 @@ import 'package:oyt_front_widgets/bottom_sheet/bottom_sheet_constants.dart';
 
 class ChangeTableStatusSheet extends ConsumerStatefulWidget {
   const ChangeTableStatusSheet({
+    required this.usersTable,
     required this.onTableStatusChanged,
     required this.table,
     super.key,
   });
 
   final TableResponse table;
+  final UsersTable usersTable;
   final void Function(TableStatus) onTableStatusChanged;
 
   static Future<void> show({
     required BuildContext context,
     required TableResponse table,
+    required UsersTable usersTable,
     required void Function(TableStatus) onTableStatusChanged,
   }) {
     return showModalBottomSheet(
@@ -27,6 +30,7 @@ class ChangeTableStatusSheet extends ConsumerStatefulWidget {
       builder: (context) => ChangeTableStatusSheet(
         table: table,
         onTableStatusChanged: onTableStatusChanged,
+        usersTable: usersTable,
       ),
     );
   }
@@ -40,7 +44,7 @@ class _ChangeTableStatusSheetState extends ConsumerState<ChangeTableStatusSheet>
 
   @override
   void initState() {
-    _tableStatus = widget.table.status;
+    _tableStatus = widget.usersTable.tableStatus ?? TableStatus.empty;
     super.initState();
   }
 
@@ -63,7 +67,7 @@ class _ChangeTableStatusSheetState extends ConsumerState<ChangeTableStatusSheet>
               IconButton(onPressed: Navigator.of(context).pop, icon: const Icon(Icons.close)),
             ],
           ),
-          Text('Estado actual: ${widget.table.status.translatedValue}'),
+          Text('Estado actual: ${widget.usersTable.tableStatus?.translatedValue}'),
           const SizedBox(height: 10),
           const Text('Selecciona el nuevo estado:'),
           ...TableStatus.values.map(
