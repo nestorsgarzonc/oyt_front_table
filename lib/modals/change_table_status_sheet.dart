@@ -51,22 +51,11 @@ class _ChangeTableStatusSheetState extends ConsumerState<ChangeTableStatusSheet>
   @override
   Widget build(BuildContext context) {
     return BaseBottomSheet(
+      title: 'Mesa ${widget.table.name}',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Text(
-                  'Mesa ${widget.table.name}',
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              IconButton(onPressed: Navigator.of(context).pop, icon: const Icon(Icons.close)),
-            ],
-          ),
           Text('Estado actual: ${widget.usersTable.tableStatus?.translatedValue}'),
           const SizedBox(height: 10),
           const Text('Selecciona el nuevo estado:'),
