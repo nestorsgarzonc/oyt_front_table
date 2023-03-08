@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:oyt_front_product/models/product_model.dart';
 
 enum TableStatus {
+  cleaning(
+    value: 'cleaning',
+    translatedValue: 'Limpiando',
+    color: Colors.cyanAccent,
+  ),
   empty(
     value: 'empty',
     translatedValue: 'Vacia',
